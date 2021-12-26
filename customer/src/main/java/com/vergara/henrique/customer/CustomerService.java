@@ -3,7 +3,7 @@ package com.vergara.henrique.customer;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService() {
+public record CustomerService(CustomerRepository customerRepository) {
 
   public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
     Customer customer = Customer.builder()
@@ -14,6 +14,6 @@ public record CustomerService() {
 
     // todo: check if email is valid
     // todo: check if email is not taken
-    // todo: store customer in db
+    this.customerRepository.save(customer);
   }
 }
