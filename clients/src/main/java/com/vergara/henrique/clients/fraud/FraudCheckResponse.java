@@ -1,4 +1,4 @@
-package com.vergara.henrique.fraud;
+package com.vergara.henrique.clients.fraud;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 

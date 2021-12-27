@@ -1,17 +1,17 @@
 package com.vergara.henrique.customer;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.vergara.henrique.clients.fraud.FraudCheckResponse;
+import com.vergara.henrique.clients.fraud.FraudClient;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
+@AllArgsConstructor
 public class CustomerService {
 
-  @Autowired
-  private CustomerRepository customerRepository;
+  private final CustomerRepository customerRepository;
 
-  @Autowired
-  private RestTemplate restTemplate;
+  private final FraudClient fraudClient;
 
   public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
     Customer customer = Customer.builder()
@@ -24,11 +24,7 @@ public class CustomerService {
     // todo: check if email is not taken
     this.customerRepository.saveAndFlush(customer);
     // todo: check if fraudster
-    FraudCheckResponse fraudCheckResponse = restTemplate
-        .getForObject("http://FRAUD/api/v1/fraud-check/{customerId}",
-            FraudCheckResponse.class,
-            customer.getId()
-        );
+    FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
 
     if (fraudCheckResponse.isFraudster()) {
       throw new IllegalStateException("fraudster");
