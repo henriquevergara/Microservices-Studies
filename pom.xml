@@ -3,8 +3,6 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>microservices</artifactId>
-  <packaging>pom</packaging>
-
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -16,10 +14,6 @@
       </plugins>
     </pluginManagement>
   </build>
-  <modules>
-    <module>customer</module>
-    <module>fraud</module>
-  </modules>
 
   <dependencies>
     <dependency>
@@ -31,7 +25,6 @@
       <groupId>org.springframework.boot</groupId>
     </dependency>
   </dependencies>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -41,6 +34,13 @@
         <type>pom</type>
         <version>${spring.boot.dependencies.version}</version>
       </dependency>
+      <dependency>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>${spring.cloud-version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -48,7 +48,15 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <modules>
+    <module>customer</module>
+    <module>fraud</module>
+    <module>eureka-server</module>
+  </modules>
+
   <name>microservices</name>
+
+  <packaging>pom</packaging>
 
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -56,6 +64,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
     <spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
+    <spring.cloud-version>2020.0.3</spring.cloud-version>
   </properties>
 
   <version>1.0-SNAPSHOT</version>
