@@ -23,7 +23,7 @@
       <module name="customer" target="17" />
       <module name="eureka-server" target="17" />
       <module name="fraud" target="17" />
-      <module name="microservices" target="1.7" />
+      <module name="microservices" target="17" />
       <module name="notification" target="17" />
     </bytecodeTargetLevel>
   </component>
