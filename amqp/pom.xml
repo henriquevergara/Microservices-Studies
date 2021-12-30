@@ -2,16 +2,16 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>clients</artifactId>
+  <artifactId>amqp</artifactId>
   <dependencies>
     <dependency>
-      <artifactId>spring-web</artifactId>
-      <groupId>org.springframework</groupId>
-      <version>5.3.13</version>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+      <groupId>org.springframework.boot</groupId>
     </dependency>
   </dependencies>
 
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <artifactId>microservices</artifactId>
     <groupId>com.vergara.henrique</groupId>
@@ -22,5 +22,4 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
-
 </project>
