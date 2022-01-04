@@ -53,4 +53,18 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
+  <profiles>
+    <profile>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>jib-maven-plugin</artifactId>
+            <groupId>com.google.cloud.tools</groupId>
+          </plugin>
+        </plugins>
+      </build>
+      <id>build-docker-image</id>
+    </profile>
+  </profiles>
+
 </project>
